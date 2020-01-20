@@ -2,13 +2,15 @@ package com.nishant.firebase.ui.viewmodels
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
+import com.google.android.gms.tasks.Task
+import com.google.firebase.auth.AuthResult
 import com.nishant.firebase.repository.Repository
 
 class ViewModel(application: Application) : AndroidViewModel(application) {
     private val repository = Repository()
 
-    fun signInAuth(email: String, password: String) =
-        repository.signIntoFirebase(email, password)
+    fun signInAuth(email: String, password: String, callback: (Task<AuthResult>) -> Unit) =
+        repository.signIntoFirebase(email, password, callback)
 
     fun signOutAuth() =
         repository.signOutFirebase()

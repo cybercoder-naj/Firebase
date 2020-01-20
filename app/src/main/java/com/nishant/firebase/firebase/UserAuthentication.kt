@@ -1,6 +1,8 @@
 package com.nishant.firebase.firebase
 
 import android.util.Log
+import com.google.android.gms.tasks.Task
+import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 
 private const val TAG = "UserAuthentication"
@@ -20,16 +22,12 @@ class UserAuthentication {
         mAuth.addAuthStateListener(mAuthListener)
     }
 
-    fun signIn(userEmail: String, userPassword: String): Boolean {
+    fun signIn(userEmail: String, userPassword: String, callback: (Task<AuthResult>) -> Unit) {
         Log.d(TAG, "signIn() called; userEmail = $userEmail; userPassword = $userPassword")
-        var successful = false
         mAuth.signInWithEmailAndPassword(userEmail, userPassword)
             .addOnCompleteListener {
-                successful = it.isSuccessful
-                Log.d(TAG, "successful = $successful")
+                callback.invoke(it)
             }
-        Log.d(TAG, "successful = $successful")
-        return successful
     }
 
     fun close() {
