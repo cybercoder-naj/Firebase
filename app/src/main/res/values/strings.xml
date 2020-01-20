@@ -4,4 +4,8 @@
     <string name="password">Password</string>
     <string name="sign_in">Sign In</string>
     <string name="sign_out">Sign out</string>
+    <string name="field_name">Field Name</string>
+    <string name="field_value">Field Value</string>
+    <string name="add_to_database">Add to database</string>
+    <string name="back">Back</string>
 </resources>

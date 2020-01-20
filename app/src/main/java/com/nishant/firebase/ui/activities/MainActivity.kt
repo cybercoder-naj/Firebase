@@ -1,7 +1,9 @@
-package com.nishant.firebase.ui.activites
+package com.nishant.firebase.ui.activities
 
+import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
+import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProviders
@@ -9,22 +11,33 @@ import com.nishant.firebase.R
 import com.nishant.firebase.ui.viewmodels.ViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 
+private const val TAG = "MainActivity"
 class MainActivity : AppCompatActivity() {
 
-    private val model = ViewModelProviders.of(this)[ViewModel::class.java]
+    private lateinit var model: ViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        model = ViewModelProviders.of(this)[ViewModel::class.java]
+
         email_sign_in_button.setOnClickListener {
             val emailStr = email.text.toString()
             val passwordStr = password.text.toString()
-            if (!TextUtils.isEmpty(emailStr) && !TextUtils.isEmpty(passwordStr))
-                if (model.signInAuth(emailStr, passwordStr))
+            if (!TextUtils.isEmpty(emailStr) && !TextUtils.isEmpty(passwordStr)) {
+                Log.d(TAG, "SignIn Button OnClickListener() called.")
+                if (!model.signInAuth(emailStr, passwordStr)) {
                     Toast.makeText(this, "Successfully signed in!", Toast.LENGTH_SHORT).show()
-                else
+                    startActivity(
+                        Intent(
+                            this,
+                            DatabaseActivity::class.java
+                        )
+                    )
+                } else
                     Toast.makeText(this, "Problem signing in.", Toast.LENGTH_SHORT).show()
+            }
         }
 
         email_sign_out_button.setOnClickListener {

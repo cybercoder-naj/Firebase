@@ -11,11 +11,17 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name="com.nishant.firebase.ui.activites.MainActivity">
+        <activity android:name="com.nishant.firebase.ui.activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity android:name="com.nishant.firebase.ui.activities.DatabaseActivity">
+            <intent-filter>
+                <action android:name="com.nishant.firebase.ui.activities.DatabaseActivity" />
+                <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </activity>
     </application>
