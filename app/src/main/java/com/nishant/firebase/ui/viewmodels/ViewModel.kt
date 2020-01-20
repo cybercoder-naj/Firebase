@@ -15,4 +15,5 @@ class ViewModel(application: Application) : AndroidViewModel(application) {
 
     fun closeAuth() = repository.closeFirebaseAuth()
 
+    fun <V> addData(map: Map<String, V>) = repository.addToFirebaseDatabase(map)
 }

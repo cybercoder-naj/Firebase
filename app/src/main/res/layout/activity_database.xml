@@ -1,19 +1,18 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/linearLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center_horizontal"
-    tools:context="com.nishant.firebase.ui.activities.MainActivity">
+    tools:context="com.nishant.firebase.ui.activities.DatabaseActivity">
 
     <EditText
-        android:id="@+id/email"
+        android:id="@+id/txt_field_name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:inputType="textEmailAddress"
+        android:inputType="text"
         android:maxLines="1"
-        android:hint="@string/username"
+        android:hint="@string/field_name"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -21,39 +20,39 @@
         app:layout_constraintVertical_bias="0.35000002" />
 
     <EditText
-        android:id="@+id/password"
+        android:id="@+id/txt_field_value"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="@string/password"
+        android:hint="@string/field_value"
         android:imeOptions="actionUnspecified"
-        android:inputType="textPassword"
+        android:inputType="text"
         android:maxLines="1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/email" />
+        app:layout_constraintTop_toBottomOf="@+id/txt_field_name" />
 
     <Button
-        android:id="@+id/email_sign_in_button"
+        android:id="@+id/btn_add"
         style="?android:textAppearanceSmall"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="@string/sign_in"
+        android:text="@string/add_to_database"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/password" />
+        app:layout_constraintTop_toBottomOf="@+id/txt_field_value"/>
 
     <Button
-        android:id="@+id/email_sign_out_button"
+        android:id="@+id/btn_back"
         style="?android:textAppearanceSmall"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="@string/sign_out"
+        android:text="@string/back"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/email_sign_in_button" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_add" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
