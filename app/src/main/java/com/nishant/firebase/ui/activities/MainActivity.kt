@@ -12,6 +12,7 @@ import com.nishant.firebase.ui.viewmodels.ViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 
 private const val TAG = "MainActivity"
+
 class MainActivity : AppCompatActivity() {
 
     private lateinit var model: ViewModel
@@ -27,16 +28,18 @@ class MainActivity : AppCompatActivity() {
             val passwordStr = password.text.toString()
             if (!TextUtils.isEmpty(emailStr) && !TextUtils.isEmpty(passwordStr)) {
                 Log.d(TAG, "SignIn Button OnClickListener() called.")
-                if (!model.signInAuth(emailStr, passwordStr)) {
-                    Toast.makeText(this, "Successfully signed in!", Toast.LENGTH_SHORT).show()
-                    startActivity(
-                        Intent(
-                            this,
-                            DatabaseActivity::class.java
+                model.signInAuth(emailStr, passwordStr) {
+                    if (it.isSuccessful) {
+                        Toast.makeText(this, "Successfully signed in!", Toast.LENGTH_SHORT).show()
+                        startActivity(
+                            Intent(
+                                this,
+                                DatabaseActivity::class.java
+                            )
                         )
-                    )
-                } else
-                    Toast.makeText(this, "Problem signing in.", Toast.LENGTH_SHORT).show()
+                    } else
+                        Toast.makeText(this, "Problem signing in.", Toast.LENGTH_SHORT).show()
+                }
             }
         }
 
