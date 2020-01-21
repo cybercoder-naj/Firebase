@@ -17,4 +17,7 @@ class Repository {
     fun closeFirebaseAuth() = userAuthentication.close()
 
     fun <V> addToFirebaseDatabase(map: Map<String, V>) = database.addData(map)
+
+    fun signUpFirebase(email: String, password: String, callback: (Task<AuthResult>) -> Unit) =
+        userAuthentication.signUp(email, password, callback)
 }

@@ -30,6 +30,13 @@ class UserAuthentication {
             }
     }
 
+    fun signUp(userEmail: String, userPassword: String, callback: (Task<AuthResult>) -> Unit) {
+        Log.d(TAG, "signUp() called; userEmail = $userEmail; userPassword = $userPassword")
+        mAuth.createUserWithEmailAndPassword(userEmail, userPassword)
+            .addOnCompleteListener {
+                callback.invoke(it)
+            }
+    }
     fun close() {
         mAuth.removeAuthStateListener(mAuthListener)
     }

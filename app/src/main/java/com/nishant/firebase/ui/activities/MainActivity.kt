@@ -7,6 +7,8 @@ import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProviders
+import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
+import com.google.firebase.auth.FirebaseAuthInvalidUserException
 import com.nishant.firebase.R
 import com.nishant.firebase.ui.viewmodels.ViewModel
 import kotlinx.android.synthetic.main.activity_main.*
@@ -37,15 +39,30 @@ class MainActivity : AppCompatActivity() {
                                 DatabaseActivity::class.java
                             )
                         )
-                    } else
-                        Toast.makeText(this, "Problem signing in.", Toast.LENGTH_SHORT).show()
+                    } else {
+                        try {
+                            throw it.exception!!
+                        } catch (invalidEmail: FirebaseAuthInvalidUserException) {
+                            Toast.makeText(this, "Email ID does not exist.", Toast.LENGTH_SHORT)
+                                .show()
+                        } catch (invalidCredentials: FirebaseAuthInvalidCredentialsException) {
+                            Toast.makeText(this, "Email ID does not exist.", Toast.LENGTH_SHORT)
+                                .show()
+                        } catch (nullPointer: KotlinNullPointerException) {
+                            Toast.makeText(this, "Problem signing in.", Toast.LENGTH_SHORT).show()
+                        }
+                    }
                 }
             }
         }
 
-        email_sign_out_button.setOnClickListener {
-            model.signOutAuth()
-            Toast.makeText(this, "Signing out...", Toast.LENGTH_SHORT).show()
+        btn_sign_up.setOnClickListener {
+            startActivity(
+                Intent(
+                    this,
+                    SignUpActivity::class.java
+                )
+            )
         }
     }
 

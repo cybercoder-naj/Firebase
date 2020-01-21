@@ -34,7 +34,7 @@ class DatabaseActivity : AppCompatActivity() {
             }
         }
 
-        btn_back.setOnClickListener { onBackPressed() }
+        btn_sign_out.setOnClickListener { onBackPressed() }
     }
 
     override fun onBackPressed() {

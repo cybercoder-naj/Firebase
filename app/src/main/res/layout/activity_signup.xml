@@ -1,18 +1,19 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center_horizontal"
-    tools:context="com.nishant.firebase.ui.activities.DatabaseActivity">
+    tools:context="com.nishant.firebase.ui.activities.MainActivity">
 
     <EditText
-        android:id="@+id/txt_field_name"
+        android:id="@+id/signup_email"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:inputType="text"
+        android:inputType="textEmailAddress"
         android:maxLines="1"
-        android:hint="@string/field_name"
+        android:hint="@string/username"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -20,39 +21,39 @@
         app:layout_constraintVertical_bias="0.35000002" />
 
     <EditText
-        android:id="@+id/txt_field_value"
+        android:id="@+id/signup_password"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="@string/field_value"
+        android:hint="@string/password"
         android:imeOptions="actionUnspecified"
-        android:inputType="text"
+        android:inputType="textPassword"
         android:maxLines="1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_field_name" />
+        app:layout_constraintTop_toBottomOf="@+id/signup_email" />
+
+    <EditText
+        android:id="@+id/confirm_password"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/confirm_password"
+        android:imeOptions="actionUnspecified"
+        android:inputType="textPassword"
+        android:maxLines="1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/signup_password" />
 
     <Button
-        android:id="@+id/btn_add"
+        android:id="@+id/btn_sign_up"
         style="?android:textAppearanceSmall"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="@string/add_to_database"
+        android:text="@string/sign_up"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_field_value"/>
-
-    <Button
-        android:id="@+id/btn_sign_out"
-        style="?android:textAppearanceSmall"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="@string/sign_out"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_add" />
+        app:layout_constraintTop_toBottomOf="@+id/confirm_password" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

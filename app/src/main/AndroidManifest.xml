@@ -24,6 +24,12 @@
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </activity>
+        <activity android:name="com.nishant.firebase.ui.activities.SignUpActivity">
+            <intent-filter>
+                <action android:name="com.nishant.firebase.ui.activities.SignUpActivity" />
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

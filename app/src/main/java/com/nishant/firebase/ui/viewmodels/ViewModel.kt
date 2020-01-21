@@ -12,6 +12,9 @@ class ViewModel(application: Application) : AndroidViewModel(application) {
     fun signInAuth(email: String, password: String, callback: (Task<AuthResult>) -> Unit) =
         repository.signIntoFirebase(email, password, callback)
 
+    fun signUpAuth(email: String, password: String, callback: (Task<AuthResult>) -> Unit) =
+        repository.signUpFirebase(email, password, callback)
+
     fun signOutAuth() =
         repository.signOutFirebase()
 
