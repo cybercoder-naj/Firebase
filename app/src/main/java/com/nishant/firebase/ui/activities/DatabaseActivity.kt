@@ -1,5 +1,6 @@
 package com.nishant.firebase.ui.activities
 
+import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
@@ -32,6 +33,15 @@ class DatabaseActivity : AppCompatActivity() {
                 )
                 Toast.makeText(this, "Added to database!", Toast.LENGTH_SHORT).show()
             }
+        }
+
+        btn_view_contents.setOnClickListener {
+            startActivity(
+                Intent(
+                    this,
+                    ShowContentsActivity::class.java
+                )
+            )
         }
 
         btn_sign_out.setOnClickListener { onBackPressed() }
