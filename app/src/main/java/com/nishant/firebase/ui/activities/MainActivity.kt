@@ -46,7 +46,7 @@ class MainActivity : AppCompatActivity() {
                             Toast.makeText(this, "Email ID does not exist.", Toast.LENGTH_SHORT)
                                 .show()
                         } catch (invalidCredentials: FirebaseAuthInvalidCredentialsException) {
-                            Toast.makeText(this, "Email ID does not exist.", Toast.LENGTH_SHORT)
+                            Toast.makeText(this, "Incorrect Password.", Toast.LENGTH_SHORT)
                                 .show()
                         } catch (nullPointer: KotlinNullPointerException) {
                             Toast.makeText(this, "Problem signing in.", Toast.LENGTH_SHORT).show()

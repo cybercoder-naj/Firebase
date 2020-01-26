@@ -1,5 +1,6 @@
 package com.nishant.firebase.repository
 
+import android.widget.ListView
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.AuthResult
 import com.nishant.firebase.firebase.Database
@@ -17,6 +18,8 @@ class Repository {
     fun closeFirebaseAuth() = userAuthentication.close()
 
     fun <V> addToFirebaseDatabase(map: Map<String, V>) = database.addData(map)
+
+    fun showContentFirebaseDatabase(listView: ListView) = database.showData(listView)
 
     fun signUpFirebase(email: String, password: String, callback: (Task<AuthResult>) -> Unit) =
         userAuthentication.signUp(email, password, callback)

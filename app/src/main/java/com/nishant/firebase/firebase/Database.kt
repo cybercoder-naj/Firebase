@@ -1,6 +1,8 @@
 package com.nishant.firebase.firebase
 
 import android.util.Log
+import android.widget.ArrayAdapter
+import android.widget.ListView
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
@@ -9,10 +11,13 @@ import com.google.firebase.ktx.Firebase
 import com.nishant.firebase.StudentInformation
 
 private const val TAG = "Database"
+
 class Database {
     private val firebaseDatabase = Firebase.database
     private val databaseReference = firebaseDatabase.reference
     private val userAuthentication = UserAuthentication()
+
+    val arrayList = ArrayList<Pair<String?, String?>>()
 
     init {
         databaseReference.addValueEventListener(object : ValueEventListener {
@@ -22,11 +27,12 @@ class Database {
 
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 for (ds in dataSnapshot.children) {
-                    val student = StudentInformation()
-                    val studentUid = userAuthentication.mAuth.currentUser?.uid ?: ""
-                    student.name = ds.child(studentUid).getValue(StudentInformation::class.java)?.name ?: ""
-                    student.age = ds.child(studentUid).getValue(StudentInformation::class.java)?.age ?: 0
+                    val student = ds.getValue(StudentInformation::class.java)
 
+                    Log.d(TAG, "name = ${student?.name}")
+                    Log.d(TAG, "age = ${student?.age}")
+
+                    arrayList.add(student?.name to student?.age)
                 }
             }
         })
@@ -43,6 +49,12 @@ class Database {
                     .child(e.key)
                     .setValue(e.value)
             }
+        }
+    }
+
+    fun showData(listView: ListView) {
+        listView.apply {
+            adapter = ArrayAdapter(listView.context, android.R.layout.simple_list_item_1, arrayList)
         }
     }
 }

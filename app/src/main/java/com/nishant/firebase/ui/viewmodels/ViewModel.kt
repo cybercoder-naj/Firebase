@@ -1,6 +1,7 @@
 package com.nishant.firebase.ui.viewmodels
 
 import android.app.Application
+import android.widget.ListView
 import androidx.lifecycle.AndroidViewModel
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.AuthResult
@@ -21,4 +22,6 @@ class ViewModel(application: Application) : AndroidViewModel(application) {
     fun closeAuth() = repository.closeFirebaseAuth()
 
     fun <V> addData(map: Map<String, V>) = repository.addToFirebaseDatabase(map)
+
+    fun showData(listView: ListView) = repository.showContentFirebaseDatabase(listView)
 }

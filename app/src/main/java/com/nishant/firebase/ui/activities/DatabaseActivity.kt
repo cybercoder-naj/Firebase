@@ -22,13 +22,14 @@ class DatabaseActivity : AppCompatActivity() {
         model = ViewModelProviders.of(this)[ViewModel::class.java]
 
         btn_add.setOnClickListener {
-            val fieldName = txt_field_name.text.toString()
-            val fieldValue = txt_field_value.text.toString()
-            if (!TextUtils.isEmpty(fieldName) && !TextUtils.isEmpty(fieldValue)) {
+            val fieldName = txt_name.text.toString()
+            val fieldAge = txt_age.text.toString()
+            if (!TextUtils.isEmpty(fieldName) && !TextUtils.isEmpty(fieldAge)) {
                 Log.d(TAG, "Adding to DB")
                 model.addData(
                     mapOf(
-                        fieldName to fieldValue
+                        "name" to fieldName,
+                        "age" to fieldAge
                     )
                 )
                 Toast.makeText(this, "Added to database!", Toast.LENGTH_SHORT).show()
